@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    render json: { users: User.all.map(&:as_json) }, status: :ok
+  end
+
   def create
     @user = User.create(user_params)
     if @user.save
