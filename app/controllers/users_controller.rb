@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate
+
   def index
     render json: { users: User.all.map(&:as_json) }, status: :ok
   end
